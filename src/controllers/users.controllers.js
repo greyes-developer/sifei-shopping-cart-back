@@ -3,7 +3,7 @@ const connPromise = dbconnection.promise();
 
 const login = async (req, res) => {
   const body = req.body;
-  console.log(body);
+  
   try {
     const findUserQuery = `select * from usuarios where nombre = '${body.nombre}'`;
     const [rows] = await connPromise.query(findUserQuery);
@@ -20,7 +20,7 @@ const login = async (req, res) => {
         message: "Usuario o contraseña incorrectos.",
       });
     }
-    console.log(rows);
+
   } catch (e) {
     res.json({
       status: "error",
