@@ -3,26 +3,26 @@ const connPromise = dbconnection.promise();
 
 const login = async (req, res) => {
   const body = req.body;
-  
-  try {
-    const findUserQuery = `select * from usuarios where nombre = '${body.nombre}'`;
-    const [rows] = await connPromise.query(findUserQuery);
-    const user = rows[0];
 
-    if (rows.length > 0 && user.clave === body.clave) {
+  try {
+    const findUserQuery = `select * from usuario where nombre_usuario = '${body.nombre}' and clave = '${body.clave}'`;
+    const [rows] = await connPromise.query(findUserQuery);
+    const userExist = rows.length > 0;
+
+    if (userExist) {
+      const user = rows[0];
       res.json({
         status: "success",
-        data: rows[0],
+        data: user,
       });
     } else {
-      res.json({
+      res.status(404).json({
         status: "error",
         message: "Usuario o contraseña incorrectos.",
       });
     }
-
   } catch (e) {
-    res.json({
+    res.status(400).json({
       status: "error",
       message: e,
     });
