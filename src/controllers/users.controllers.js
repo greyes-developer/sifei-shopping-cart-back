@@ -1,4 +1,5 @@
 const dbconnection = require("../db");
+const { generateJWT } = require("../helpers/generateJWT");
 const connPromise = dbconnection.promise();
 
 const login = async (req, res) => {
@@ -11,9 +12,15 @@ const login = async (req, res) => {
 
     if (userExist) {
       const user = rows[0];
+      //Generate JSON Web Token JWT
+      const token = await generateJWT(body.nombre);
+
       res.json({
         status: "success",
-        data: user,
+        data: {
+          ...user,
+          token,
+        },
       });
     } else {
       res.status(404).json({

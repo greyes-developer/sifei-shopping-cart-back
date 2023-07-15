@@ -13,7 +13,7 @@ const getProducts = async (req, res) => {
   } catch (e) {
     res.status(400).json({
       status: "error",
-      error: e,
+      message: e,
     });
   }
 };
@@ -45,7 +45,7 @@ const buyProducts = async (req, res) => {
   } catch (e) {
     res.status(400).json({
       status: "error",
-      error: e,
+      message: e,
     });
   }
 };
