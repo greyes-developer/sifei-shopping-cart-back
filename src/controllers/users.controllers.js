@@ -14,13 +14,14 @@ const login = async (req, res) => {
       const user = rows[0];
       //Generate JSON Web Token JWT
       const token = await generateJWT(body.nombre);
-
+      const { id_usuario, nombre_usuario } = user;
       res.json({
         status: "success",
         data: {
-          ...user,
-          token,
+          id_usuario,
+          nombre_usuario,
         },
+        token,
       });
     } else {
       res.status(404).json({
