@@ -11,7 +11,7 @@ To run the project its necessary to have cloned the repo in your local. Once you
 
 2. Create an environment file called `.env` in the root of the project and paste keys and their values. (Take the `.example.env` file as reference to fill this file)
 
-3. Go to your Database Management System en run the database queries, first the creation of the database and then the creation of the tables which are located in the script. Once it is excuted go back to the root of the backend project and run the next command.
+3. Go to your Database Management System en run the database queries, first the creation of the database and then the creation of the tables which are located in the script. Then you can populate the database with the data that appears in that script. Once it is excuted go back to the root of the backend project and run the next command.
 
 4. Run this command
    `npm run dev`
